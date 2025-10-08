@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "CU Dark Theme",
+  "version": "0.2.1",
+  "description": "Auto/Manual dark theme for centraluniversity.ru with icon recolor and logo swap.",
+  "action": {
+    "default_title": "CU Dark Theme",
+    "default_popup": "popup/popup.html",
+    "default_logo": "https://wowprofi.ru/src/Frontend/Files/Cache/media_library_thumbnail_small_2/src/Frontend/Files/MediaLibrary/09/central-university.jpg"
+  },
+  "icons": {
+    "256": "256.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://my.centraluniversity.ru/*",
+    "https://id.centraluniversity.ru/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://my.centraluniversity.ru/*",
+        "https://id.centraluniversity.ru/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "force-dark.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "https://my.centraluniversity.ru/*",
+        "https://id.centraluniversity.ru/*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>CU Dark Theme</title>
+    <style>
+        html, body {
+            font: 13px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial,
+            sans-serif;
+            margin: 0;
+            padding: 16px;
+            color: #ffffff;
+            background-color: #000000;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 16px;
+            margin: 0 0 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            padding: 2px 0;
+            width: 100%;
+        }
+
+        .muted {
+            color: #666;
+        }
+
+        fieldset {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 0 0 12px 0;
+            background: #1a1a1a;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        legend {
+            text-align: center;
+            padding: 0 12px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 4px 0;
+            font-size: 13px;
+        }
+
+        input[type="radio"] {
+            margin: 0;
+            accent-color: #2e90fa;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        a {
+            color: #2e90fa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>CU Dark Theme</h1>
+<fieldset>
+    <legend>Mode</legend>
+    <div class="row">
+        <label>
+            <input type="radio" name="mode" value="auto"/>
+            Auto (system)
+        </label>
+    </div>
+    <div class="row">
+        <label>
+            <input type="radio" name="mode" value="dark"/>
+            Dark
+        </label>
+    </div>
+    <div class="row">
+        <label>
+            <input type="radio" name="mode" value="light"/>
+            Light
+        </label>
+    </div>
+</fieldset>
+<div class="footer muted">
+    Made by <a href="https://t.me/nekiric" target="_blank">Goydovich</a>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>

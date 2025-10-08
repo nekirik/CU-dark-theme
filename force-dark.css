@@ -1,0 +1,142 @@
+/* Chrome-like force dark mode. Applied when html has .cu-force-dark */
+
+html.cu-force-dark {
+    filter: invert(1) hue-rotate(180deg);
+    background: #0e0f12 !important;
+    color: #e6e6e6 !important;
+}
+
+/* Restore media and content images/videos back (double invert) */
+html.cu-force-dark img:not([data-dark-keep]),
+html.cu-force-dark picture:not([data-dark-keep]) img,
+html.cu-force-dark video,
+html.cu-force-dark canvas,
+html.cu-force-dark iframe,
+html.cu-force-dark object[type^="image/"],
+html.cu-force-dark embed[type^="image/"] {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Background images on blocks */
+html.cu-force-dark [class*="bg"],
+html.cu-force-dark [style*="background-image"],
+html.cu-force-dark [style*="background:url"] {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Forms: slight contrast increase while keeping native states/animations */
+html.cu-force-dark input,
+html.cu-force-dark textarea,
+html.cu-force-dark select,
+html.cu-force-dark button:not([tuitab]) {
+    background: rgba(24, 24, 24, 0.95);
+    color: #e6e6e6;
+    border-color: #3a3a3a;
+}
+
+/* Exclude specific accordion headers from the form-button overrides */
+html.cu-force-dark .themes-accordion .t-header,
+html.cu-force-dark .cu-accordion .t-header {
+    background: transparent !important;
+    color: inherit !important;
+    border-color: inherit !important;
+}
+
+/* Sidebar segmented control: make segments dark */
+html.cu-force-dark .sidebar__segmented {
+    /* cancel page invert for container and paint dark explicitly */
+    filter: invert(1) hue-rotate(180deg) !important;
+    background-color: #181818 !important;
+    color: #e6e6e6 !important;
+    border-color: #3a3a3a !important;
+}
+/* Moving slider (active indicator) inside segmented */
+html.cu-force-dark .sidebar__segmented::before {
+    background-color: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+}
+html.cu-force-dark .sidebar__segmented-button {
+    background-color: transparent !important;
+    color: #e6e6e6 !important;
+    border-color: #3a3a3a !important;
+}
+html.cu-force-dark .sidebar__segmented-button._active,
+html.cu-force-dark .sidebar__segmented-button:focus-visible {
+    outline: 2px solid #2e90fa;
+}
+
+/* Keep SVG/monochrome icons inverted with the page, but preserve their hover animations */
+/* Do NOT override transitions; rely on currentColor from the site theme */
+/* Do not force icon colors globally to preserve hover/active animations */
+/* Preserve brand color for book icon (do not force white) */
+html.cu-force-dark tui-icon[style*="cuIconBookOpen01.svg"] {
+    filter: invert(1) hue-rotate(180deg) !important; /* cancel page invert */
+    color: inherit !important;
+}
+
+/* Header logo via CSS var stays inverted by default; our content.js can still swap if configured */
+/* Force header logo to be solid white and cancel page invert so it doesn't disappear */
+html.cu-force-dark .header__logo-link [style*="--t-icon-start"],
+html.cu-force-dark .logo-link [style*="--t-icon-start"] {
+    filter: invert(1) hue-rotate(180deg) !important; /* cancel page invert */
+    color: #fff !important; /* keep logo white */
+}
+
+/* Fix flicker on accordion chevron: pre-rendered icon paint w/o flash */
+html.cu-force-dark tui-icon[style*="cuIconChevronDown"],
+html.cu-force-dark tui-icon[style*="cuIconChevronRight"] {
+    will-change: filter;
+}
+
+/* Keep green success check icon */
+html.cu-force-dark tui-icon[style*="cuIconCheck.svg"] {
+    /* keep green, cancel page invert so color is not flipped */
+    filter: invert(1) hue-rotate(180deg) saturate(1.15) brightness(1);
+    color: #00ab47 !important;
+}
+
+/* Elements reported as staying light: ensure they are not double-inverted and have dark surface */
+html.cu-force-dark tui-badge,
+html.cu-force-dark .event-counter,
+html.cu-force-dark .multiselect__dropdown,
+html.cu-force-dark tui-data-list-wrapper,
+html.cu-force-dark tui-data-list,
+html.cu-force-dark [automation-id="tui-data-list-wrapper__option"] {
+    /* let page-level invert decide; avoid forcing dark values that invert to white */
+    background-color: transparent !important;
+    color: inherit !important;
+    border-color: inherit !important;
+}
+
+/* Status badge: keep border/background from light theme, invert only text */
+html.cu-force-dark tui-badge[tuistatus],
+html.cu-force-dark .cu-badge[tuistatus] {
+    filter: invert(1) hue-rotate(180deg) !important; /* cancel page invert for container */
+}
+html.cu-force-dark tui-badge[tuistatus] *,
+html.cu-force-dark .cu-badge[tuistatus] * {
+    filter: invert(1) hue-rotate(180deg) !important; /* re-apply invert only to text */
+}
+
+/* Chip: preserve pale background/border, invert only text */
+html.cu-force-dark tui-chip.state-chip,
+html.cu-force-dark .state-chip {
+    filter: invert(1) hue-rotate(180deg) !important; /* cancel invert on container */
+    color: #fff !important; /* fix text to white */
+}
+html.cu-force-dark tui-chip.state-chip *,
+html.cu-force-dark .state-chip * {
+    filter: none !important;
+}
+
+/* Remove any overrides for [tuitab] to preserve native hover/active animations */
+
+/* Allow navbar [tuitab] to use native colors and animations (no overrides) */
+
+/* Student skill level: invert only default (inherit) stars, keep explicitly colored active ones */
+html.cu-force-dark
+cu-student-skill-level
+.level-icons
+.level-icon[style*="color: inherit"] {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
